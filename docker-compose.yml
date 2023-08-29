@@ -1,0 +1,30 @@
+# docker-compose --log-level INFO up --build portable-gitlab
+# docker-compose --log-level INFO up
+
+version: '3'
+services:
+  portable-gitlab:
+    image: terwer/gitlab:15.3.2
+    container_name: portable-gitlab
+    build:
+     context: .
+     dockerfile: Dockerfile
+    ports:
+     - "8443:443"
+     - "8002:80"
+     - "8022:22"
+    environment:
+     - "TZ=Asia/Shanghai"
+    volumes:
+     - ./data/config:/etc/gitlab
+     - ./data/log:/var/log/gitlab
+     - ./data/opt:/var/opt/gitlab
+    stdin_open: true
+    tty: true
+    restart: "no"
+    # networks:
+    #  - local-dev
+
+# networks:
+#   local-dev:
+#    external: true

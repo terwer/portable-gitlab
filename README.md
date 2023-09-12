@@ -1,10 +1,46 @@
 # portable-gitlab
 portable gitlab via docker
 
-## Change config
+## Docs
+
+https://docs.gitlab.com/ee/install/docker.html#install-gitlab-using-docker-compose
+
+## Startup
 
 ```bash
-docker cp portable-gitlab:/etc/gitlab/gitlab.rb ~/Downloads
-
-docker cp ./conf/gitlab.rb portable-gitlab:/etc/gitlab/gitlab.rb
+docker compose up
 ```
+
+## Config
+
+1 open http://localhost:8002
+
+2 show password
+
+  ```bash
+  ./showpassword.sh
+  ```
+
+ and change root password
+
+3 change config
+
+  change `docker-compose.yml` environment or change `gitlab.rb`
+
+  ```bash
+  docker exec -it gitlab editor /etc/gitlab/gitlab.rb
+  ```
+
+4 create user
+
+  http://localhost:8002/admin/users
+
+  create user as Anministrator and change password
+
+  terwer/tyw123456
+
+5 add import sources `Github`
+
+  An administrator of your GitLab instance needs to enable GitHub as an import source at `Admin Area` > `Settings` > `General` > `Visibility and access controls` .
+
+  http://localhost:8002/admin/application_settings/general

@@ -9,6 +9,7 @@ services:
       GITLAB_SKIP_UNMIGRATED_DATA_CHECK: "true"
       GITLAB_OMNIBUS_CONFIG: |
         external_url = "http://localhost:8002"
+        gitlab_rails["gitlab_ssh_host"] = "localhost"
     ports:
       - "8002:80"
       - "8443:443"

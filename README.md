@@ -44,3 +44,22 @@ docker compose up
   An administrator of your GitLab instance needs to enable GitHub as an import source at `Admin Area` > `Settings` > `General` > `Visibility and access controls` .
 
   http://localhost:8002/admin/application_settings/general
+
+6 add ssh key 
+
+  http://localhost:8002/-/profile/keys
+
+  https://docs.gitlab.com/16.3/ee/user/ssh.html#generate-an-ssh-key-pair
+
+  ssh config
+
+  ```
+  # gitlab local docker
+  # Private GitLab instance
+  Host localhost
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_ed25519_gitlab_local
+    Port 8022
+  ```
+
+  http://localhost:8002/admin/application_settings/general#js-visibility-settings
